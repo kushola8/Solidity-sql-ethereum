@@ -1,1 +1,44 @@
+pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+
+interface SQLOracle is IERC165 {
+    function getDataFromSQL(string calldata query) external returns (uint);
+}
+contract TokenTransferWithSQL {
+    address public sqlOracleAddress;
+    address public tokenAddress;
+    constructor(address _sqlOracleAddress, address _tokenAddress) {
+        sqlOracleAddress = _sqlOracleAddress;
+        tokenAddress = _tokenAddress;
+    }
+    function transferTokensBasedOnSQL(string calldata sqlQuery, uint amount) external {
+        require(SQLOracle(sqlOracleAddress).supportsInterface(type(SQLOracle).interfaceId), "invalid adrress SQL");
+
+        uint sqlData = SQLOracle(sqlOracleAddress).getDataFromSQL(sqlQuery);
+        require(amount <= sqlData, "invalid");
+        // token.transfer(msg.sender, amount);
+    }
+}
+
+
+import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+
+interface SQLOracle is IERC165 {
+    function getDataFromSQL(string calldata query) external returns (uint);
+}
+contract TokenTransferWithSQLandno {
+    address public sqlOracleAddress;
+    address public tokenAddress;
+    constructor(address _sqlOracleAddress, address _tokenAddress) {
+        sqlOracleAddress = _sqlOracleAddress;
+        tokenAddress = _tokenAddress;
+    }
+    function transferTokensBasedOnSQL(string calldata sqlQuery, uint amount) external {
+        require(SQLOracle(sqlOracleAddress).supportsInterface(type(SQLOracle).interfaceId), "invalid adrress SQL");
+
+        uint sqlData = SQLOracle(sqlOracleAddress).getDataFromSQL(sqlQuery);
+        require(amount <= sqlData, "invalid");
+        // token.transfer(msg.sender, amount);
+    }
+}
