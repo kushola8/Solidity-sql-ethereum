@@ -3,7 +3,6 @@ import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 interface SQLOracle is IERC165 {
     function getDataFromSQL(string calldata query) external returns (uint);
 }
-
 contract TokenTransferWithSQL {
     address public sqlOracleAddress;
     address public tokenAddress;
@@ -19,9 +18,7 @@ contract TokenTransferWithSQL {
         // token.transfer(msg.sender, amount);
     }
 }
-
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-
 interface SQLOracle is IERC165 {
     function getDataFromSQL(string calldata query) external returns (uint);
 }
