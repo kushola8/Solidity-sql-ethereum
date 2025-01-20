@@ -15,7 +15,6 @@ contract TokenTransferWithSQL {
 
         uint sqlData = SQLOracle(sqlOracleAddress).getDataFromSQL(sqlQuery);
         require(amount <= sqlData, "invalid");
-        // token.transfer(msg.sender, amount);
     }
 }
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
